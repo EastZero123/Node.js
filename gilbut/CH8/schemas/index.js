@@ -9,7 +9,6 @@ const connect = () => {
     {
       dbName: "nodejs",
       useNewUrlParser: true,
-      useCreateIndex: true,
     },
     (error) => {
       if (error) {
