@@ -1,35 +1,38 @@
-import React, { useCallback, useState } from "react"
+import React, { useState, useCallback } from 'react';
 import {
-  Redirect,
-  Route,
   BrowserRouter as Router,
-  Switch,
-} from "react-router-dom"
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
 
-import NewPlace from "./places/pages/NewPlace"
-import UpdatePlace from "./places/pages/UpdatePlace"
-import UserPlaces from "./places/pages/UserPlaces"
-import MainNavigation from "./shared/components/Navigation/MainNavigation"
-import { AuthContext } from "./shared/context/auth-context"
-import Auth from "./user/pages/Auth"
-import Users from "./user/pages/Users"
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
+import UserPlaces from './places/pages/UserPlaces';
+import UpdatePlace from './places/pages/UpdatePlace';
+import Auth from './user/pages/Auth';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
+import { AuthContext } from './shared/context/auth-context';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = useCallback(() => {
-    setIsLoggedIn(true)
-  }, [])
+    setIsLoggedIn(true);
+  }, []);
 
   const logout = useCallback(() => {
-    setIsLoggedIn(false)
-  }, [])
+    setIsLoggedIn(false);
+  }, []);
 
-  let routes
+  let routes;
 
   if (isLoggedIn) {
     routes = (
       <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
         <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route>
@@ -41,7 +44,7 @@ const App = () => {
         </Route>
         <Redirect to="/" />
       </Switch>
-    )
+    );
   } else {
     routes = (
       <Switch>
@@ -56,7 +59,7 @@ const App = () => {
         </Route>
         <Redirect to="/auth" />
       </Switch>
-    )
+    );
   }
 
   return (
@@ -68,6 +71,7 @@ const App = () => {
         <main>{routes}</main>
       </Router>
     </AuthContext.Provider>
-  )
-}
-export default App
+  );
+};
+
+export default App;

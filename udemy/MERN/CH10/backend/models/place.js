@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const placeSchema = new Schema({
   title: { type: String, required: true },
@@ -9,9 +9,9 @@ const placeSchema = new Schema({
   address: { type: String, required: true },
   location: {
     lat: { type: Number, required: true },
-    lng: { type: Number, required: true },
+    lng: { type: Number, required: true }
   },
-  creator: { type: mongoose.Types.ObjectId, required: true, ref: "User" },
-})
+  creator: { type: mongoose.Types.ObjectId, required: true, ref: 'User' }
+});
 
-module.exports = mongoose.model("Place", placeSchema)
+module.exports = mongoose.model('Place', placeSchema);

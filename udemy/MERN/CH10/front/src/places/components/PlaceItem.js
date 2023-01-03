@@ -1,32 +1,33 @@
-import React, { useContext, useState } from "react"
-import Button from "../../shared/components/FormElements/Button"
-import Card from "../../shared/components/UIElements/Card"
-import Map from "../../shared/components/UIElements/Map"
-import Modal from "../../shared/components/UIElements/Modal"
-import { AuthContext } from "../../shared/context/auth-context"
+import React, { useState, useContext } from 'react';
 
-import "./PlaceItem.css"
+import Card from '../../shared/components/UIElements/Card';
+import Button from '../../shared/components/FormElements/Button';
+import Modal from '../../shared/components/UIElements/Modal';
+import Map from '../../shared/components/UIElements/Map';
+import { AuthContext } from '../../shared/context/auth-context';
+import './PlaceItem.css';
 
-const PlaceItem = (props) => {
-  const auth = useContext(AuthContext)
-  const [showMap, setShowMap] = useState(false)
-  const [showConfirmModal, setShowConfirmModal] = useState(false)
+const PlaceItem = props => {
+  const auth = useContext(AuthContext);
+  const [showMap, setShowMap] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const openMapHandler = () => setShowMap(true)
+  const openMapHandler = () => setShowMap(true);
 
-  const closeMapHandler = () => setShowMap(false)
+  const closeMapHandler = () => setShowMap(false);
 
   const showDeleteWarningHandler = () => {
-    setShowConfirmModal(true)
-  }
+    setShowConfirmModal(true);
+  };
 
   const cancelDeleteHandler = () => {
-    setShowConfirmModal(false)
-  }
+    setShowConfirmModal(false);
+  };
 
   const confirmDeleteHandler = () => {
-    setShowConfirmModal(false)
-  }
+    setShowConfirmModal(false);
+    console.log('DELETING...');
+  };
 
   return (
     <React.Fragment>
@@ -58,7 +59,10 @@ const PlaceItem = (props) => {
           </React.Fragment>
         }
       >
-        <p>정말 삭제하시겠습니까?</p>
+        <p>
+          Do you want to proceed and delete this place? Please note that it
+          can't be undone thereafter.
+        </p>
       </Modal>
       <li className="place-item">
         <Card className="place-item__content">
@@ -77,6 +81,7 @@ const PlaceItem = (props) => {
             {auth.isLoggedIn && (
               <Button to={`/places/${props.id}`}>EDIT</Button>
             )}
+
             {auth.isLoggedIn && (
               <Button danger onClick={showDeleteWarningHandler}>
                 DELETE
@@ -86,7 +91,7 @@ const PlaceItem = (props) => {
         </Card>
       </li>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default PlaceItem
+export default PlaceItem;
