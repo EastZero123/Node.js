@@ -92,7 +92,7 @@ const Auth = () => {
           }
         )
 
-        auth.login(responseData.user.id)
+        auth.login(responseData.user._id)
       } catch (err) {}
     }
   }

@@ -63,8 +63,9 @@ const UpdatePlace = () => {
 
   const placeUpdateSubmitHandler = async (event) => {
     event.preventDefault()
+    console.log(placeId)
     try {
-      sendRequest(
+      await sendRequest(
         `http://localhost:5000/api/places/${placeId}`,
         "PATCH",
         JSON.stringify({
@@ -119,7 +120,7 @@ const UpdatePlace = () => {
             validators={[VALIDATOR_MINLENGTH(5)]}
             errorText="Please enter a valid description (min. 5 characters)."
             onInput={inputHandler}
-            initialValue={loadedPlace.title}
+            initialValue={loadedPlace.description}
             initialValid={true}
           />
           <Button type="submit" disabled={!formState.isValid}>
