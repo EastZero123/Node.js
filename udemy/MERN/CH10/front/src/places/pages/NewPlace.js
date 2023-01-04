@@ -1,59 +1,67 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext } from "react"
 
-import Input from '../../shared/components/FormElements/Input';
-import Button from '../../shared/components/FormElements/Button';
-import ErrorModal from '../../shared/components/UIElements/ErrorModal';
-import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import Input from "../../shared/components/FormElements/Input"
+import Button from "../../shared/components/FormElements/Button"
 import {
   VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH
-} from '../../shared/util/validators';
-import { useForm } from '../../shared/hooks/form-hook';
-import { useHttpClient } from '../../shared/hooks/http-hook';
-import { AuthContext } from '../../shared/context/auth-context';
-import './PlaceForm.css';
+  VALIDATOR_MINLENGTH,
+} from "../../shared/util/validators"
+import { useForm } from "../../shared/hooks/form-hook"
+import "./PlaceForm.css"
+import { useHttpClient } from "../../shared/hooks/http-hook"
+import { AuthContext } from "../../shared/context/auth-context"
+import ErrorModal from "../../shared/components/UIElements/ErrorModal"
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner"
+import { useHistory } from "react-router-dom"
 
 const NewPlace = () => {
-  const auth = useContext(AuthContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const auth = useContext(AuthContext)
+  const { isLoading, error, sendRequest, clearError } = useHttpClient()
   const [formState, inputHandler] = useForm(
     {
       title: {
-        value: '',
-        isValid: false
+        value: "",
+        isValid: false,
       },
       description: {
-        value: '',
-        isValid: false
+        value: "",
+        isValid: false,
       },
       address: {
-        value: '',
-        isValid: false
-      }
+        value: "",
+        isValid: false,
+      },
     },
     false
-  );
+  )
 
-  const history = useHistory();
+  const history = useHistory()
 
-  const placeSubmitHandler = async event => {
-    event.preventDefault();
+  const placeSubmitHandler = async (event) => {
+    event.preventDefault()
+    console.log(
+      JSON.stringify({
+        title: formState.inputs.title.value,
+        description: formState.inputs.description.value,
+        address: formState.inputs.address.value,
+        creator: auth,
+      })
+    )
     try {
       await sendRequest(
-        'http://localhost:5000/api/places',
-        'POST',
+        "http://localhost:5000/api/places",
+        "POST",
         JSON.stringify({
           title: formState.inputs.title.value,
           description: formState.inputs.description.value,
           address: formState.inputs.address.value,
-          creator: auth.userId
+          creator: auth.userId,
         }),
-        { 'Content-Type': 'application/json' }
-      );
-      history.push('/');
-    } catch (err) {}
-  };
+        { "Content-Type": "application/json" }
+      )
+      history.push("/")
+    } catch (error) {}
+  }
 
   return (
     <React.Fragment>
@@ -90,7 +98,7 @@ const NewPlace = () => {
         </Button>
       </form>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default NewPlace;
+export default NewPlace
