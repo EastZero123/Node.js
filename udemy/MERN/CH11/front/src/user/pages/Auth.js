@@ -14,6 +14,7 @@ import { useForm } from "../../shared/hooks/form-hook"
 import { useHttpClient } from "../../shared/hooks/http-hook"
 import { AuthContext } from "../../shared/context/auth-context"
 import "./Auth.css"
+import ImageUpload from "../../shared/components/FormElements/ImageUpload"
 
 const Auth = () => {
   const auth = useContext(AuthContext)
@@ -40,6 +41,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
+          image: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       )
@@ -49,6 +51,10 @@ const Auth = () => {
           ...formState.inputs,
           name: {
             value: "",
+            isValid: false,
+          },
+          image: {
+            value: null,
             isValid: false,
           },
         },
@@ -115,6 +121,9 @@ const Auth = () => {
               errorText="Please enter a name."
               onInput={inputHandler}
             />
+          )}
+          {!isLoginMode && (
+            <ImageUpload center id={image} onInput={inputHandler} />
           )}
           <Input
             element="input"
