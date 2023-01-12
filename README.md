@@ -101,9 +101,9 @@ const html = template.HTML(
 - 예시에서 나온 동기화 처리 지원 함수가 아니라도 async/await, promise와 같은 다른 방식으로 동기화 처리를 할 수 있다.
 
 - 이해를 돕기 위한 이미지
-<center>
-  <img src="./async1.png" width="500" height="369"><img src="./async2.png" width="500" height="369">
-</center>
+<p>
+  <img src="./async1.png" align="center" width="49%"><img src="./async2.png" align="center" width="49%">
+</p>
 
 ### async/await, promise
 
