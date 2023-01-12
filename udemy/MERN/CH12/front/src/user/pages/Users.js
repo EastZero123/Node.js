@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import ErrorModal from "../../shared/components/UIElements/ErrorModal"
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner"
 import { useHttpClient } from "../../shared/hooks/http-hook"
+import iconv from "iconv-lite"
 
 import UsersList from "../components/UsersList"
 
@@ -21,6 +22,23 @@ const Users = () => {
     }
     fetchUsers()
   }, [sendRequest])
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/portfolio/portfolio.do",
+          {
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+          }
+        )
+        console.log(response.json())
+        const responseData = await response.json()
+        console.log(JSON.parse(responseData))
+      } catch (error) {}
+    }
+    fetchUsers()
+  }, [])
 
   return (
     <React.Fragment>

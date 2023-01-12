@@ -140,6 +140,13 @@ const updatePlace = async (req, res, next) => {
     return next(error)
   }
 
+  if (place.creator.toString() !== req.userData.userId) {
+    const error = new HttpError(
+      "Something went wrong, could not update place.",
+      500
+    )
+  }
+
   place.title = title
   place.description = description
 
@@ -171,6 +178,11 @@ const deletePlace = async (req, res, next) => {
   }
 
   if (!place) {
+    const error = new HttpError("Could not find place for this id.", 404)
+    return next(error)
+  }
+
+  if (place.creator.id.toString() !== req.userData.userId) {
     const error = new HttpError("Could not find place for this id.", 404)
     return next(error)
   }
