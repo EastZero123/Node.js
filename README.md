@@ -26,17 +26,17 @@
 
 ```javascript
 // http 서버 생성
-const http = require('http');
+const http = require("http")
 
 const app = http.createServer((request, response) => {
-  let _url = request.url;
-  let pathname = url.parse(_url, true).pathname;
+  let _url = request.url
+  let pathname = url.parse(_url, true).pathname
 
-  if (pathname === '/') {
-    res.writeHead(200);
-    res.end('Hello World');
+  if (pathname === "/") {
+    res.writeHead(200)
+    res.end("Hello World")
   }
-});
+})
 ```
 
 ## Node.js 선행학습
@@ -54,8 +54,12 @@ const app = http.createServer((request, response) => {
   - 외장 모듈을 사용하기 위해서는 npm(Node Package Manager)을 사용.
 
 - 내장 모듈
+
   - Node.js를 설치하고 나면 그 안에 이미 제공되어지는 모듈.
   - 내장 모듈은 이미 Node.js를 설치할 때 존재하기 때문에 npm을 사용하지 않음.
+
+- 이해를 돕기 위한 이미지
+  <img src="./week1.png" width="800" height="600">
 
 ```javascript
 // 모듈 생성
@@ -74,12 +78,12 @@ module.exports = {
       ${control}      
       ${body}
     </body>
-  </html>`;
+  </html>`
   },
-};
+}
 
 // 모듈 호출
-const template = require('./lib/template');
+const template = require("./lib/template")
 
 // 모듈 실행
 const html = template.HTML(
@@ -87,7 +91,7 @@ const html = template.HTML(
   list,
   `<h2>${title}</h2><p>${description}</p>`,
   `<a href="/create">create</a>`
-);
+)
 ```
 
 ## 동기(Synchronous), 비동기(Asynchronous)
@@ -105,10 +109,10 @@ const html = template.HTML(
 ### GET
 
 ```javascript
-let queryData = url.parse(_url, true).query;
+let queryData = url.parse(_url, true).query
 
 // queryData.XXX -> XXX에서 url에서 파라미터 변수를 지정
-let id = queryData.id;
+let id = queryData.id
 ```
 
 ### POST
@@ -117,16 +121,16 @@ let id = queryData.id;
 
 ```javascript
 // 'data'는 데이터를 가공
-request.on('data', function (data) {
-  body += data;
-});
+request.on("data", function (data) {
+  body += data
+})
 
 // 'end'는 가장 마지막에 수행할 작업
-request.on('end', function () {
-  const post = qs.parse(body);
-  const title = post.title;
-  const description = post.description;
-});
+request.on("end", function () {
+  const post = qs.parse(body)
+  const title = post.title
+  const description = post.description
+})
 ```
 
 ## Package Manager?
