@@ -59,7 +59,7 @@ const app = http.createServer((request, response) => {
   - 내장 모듈은 이미 Node.js를 설치할 때 존재하기 때문에 npm을 사용하지 않음.
 
 - 이해를 돕기 위한 이미지
-  <img src="./week1.png" width="800" height="600">
+  <img src="./week1.png" width="1000" height="600">
 
 ```javascript
 // 모듈 생성
