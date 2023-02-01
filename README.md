@@ -1,9 +1,9 @@
 # Code Guide
 
-## Routing
+# Express.js?
 
-- 라우팅 은 응용 프로그램이 URI(또는 경로) 및 특정 HTTP 요청 메서드(GET, POST 등)인 특정 끝점에 대한 클라이언트 요청에 응답하는 방법을 결정.
-- 각 경로에는 경로가 일치할 때 실행되는 하나 이상의 핸들러 함수가 있을 수 있다.
+- https://expressjs.com
+- 웹 및 모바일 애플리케이션을 위한 강력한 기능 세트를 제공하는 최소한의 유연한 Node.js 웹 **애플리케이션 프레임워크[1](#footnote1)**.
 
 - Express 기본 사용법
 
@@ -23,15 +23,13 @@ app.XXX()
 - 페이지 구현
 
 ```js
-const express = require("express")
+const express = require('express')
 const app = express()
 
-app.METHOD("Something", function (req, res) {
-  // 함수 구문
+app.METHOD[2](#footnote2)('Something', function(req,res){
+    // 함수 구문
 })
 ```
-
-METHOD[1](#footnote1)
 
 - 동적페이지의 param 구하기
 
@@ -48,4 +46,9 @@ app.get("/test/:params", function (req, res) {
 
 ---
 
-<a name="footnote1">1</a> GET,POST,PUT,DELETE등 Http 요청 메소드를 의미한다
+<a name="footnote1">1</a> - https://namu.wiki/w/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC
+
+- 프레임워크(Framework)는 Frame + work라는 두 단어가 합쳐진 단어.
+- **Frame**(틀) + **work**(일하다) = 틀을 가지고 일하다.
+- 웹 프레임워크 -> '웹 서버'를 구현하기 위한 목적으로 만들어진 프레임워크.
+  <a name="footnote2">2</a> GET,POST,PUT,DELETE등 Http 요청 메소드를 의미한다
