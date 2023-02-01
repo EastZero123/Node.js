@@ -3,7 +3,7 @@
 # Express.js?
 
 - https://expressjs.com
-- Node.js를 위한 빠르고 개방적인 간결한 **웹 프레임워크**<sup>[1](#footnote_1)</sup>
+- Node.js를 위한 빠르고 개방적인 간결한 **웹 프레임워크**<sup>[1](#footnote1)</sup>
 
 - Express 기본 사용법
 
