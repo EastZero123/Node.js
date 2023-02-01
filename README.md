@@ -23,13 +23,15 @@ app.XXX()
 - 페이지 구현
 
 ```js
-const express = require('express')
+const express = require("express")
 const app = express()
 
-app.METHOD[1](#footnote1)('Something', function(req,res){
-    // 함수 구문
+app.METHOD("Something", function (req, res) {
+  // 함수 구문
 })
 ```
+
+METHOD[1](#footnote1)
 
 - 동적페이지의 param 구하기
 
