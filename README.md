@@ -101,11 +101,10 @@ router.get("/d", function () {})
 ---
 
 <a name="footnote1">1</a>
-
-- https://namu.wiki/w/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC
-- 프레임워크(Framework)는 Frame + work라는 두 단어가 합쳐진 단어.
-- **Frame**(틀) + **work**(일하다) = 틀을 가지고 일하다.
-- 웹 프레임워크 -> '웹 서버'를 구현하기 위한 목적으로 만들어진 프레임워크.
-  <a name="footnote2">2</a> GET,POST,PUT,DELETE등 Http 요청 메소드를 의미한다
-  <a name="footnote3">3</a> HTTP 요청과 응답 사이에서 동작하는 함수이다
-  <a name="footnote4">4</a> 라우터는 클라이언트의 요청 경로(path)를 보고 이 요청을 처리할 수 있는 곳으로 기능을 전달해주는 역할을 한다
+https://namu.wiki/w/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC
+프레임워크(Framework)는 Frame + work라는 두 단어가 합쳐진 단어.
+**Frame**(틀) + **work**(일하다) = 틀을 가지고 일하다.
+웹 프레임워크 -> '웹 서버'를 구현하기 위한 목적으로 만들어진 프레임워크.
+<a name="footnote2">2</a> GET,POST,PUT,DELETE등 Http 요청 메소드를 의미한다
+<a name="footnote3">3</a> HTTP 요청과 응답 사이에서 동작하는 함수이다
+<a name="footnote4">4</a> 라우터는 클라이언트의 요청 경로(path)를 보고 이 요청을 처리할 수 있는 곳으로 기능을 전달해주는 역할을 한다
