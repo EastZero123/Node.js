@@ -46,7 +46,7 @@ app.get("/test/:params", function (req, res) {
 })
 ```
 
-http://localhost:3000/test/123123로 접속하면
+`http://localhost:3000/test/123123`로 접속하면
 { params: '123123' } 가 콘솔 출력된다<br/>
 
 - 미들웨어<sup>[3](#footnote3)</sup> body parser
