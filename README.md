@@ -36,7 +36,7 @@ app.METHOD("Something", function (req, res) {
 app.listen(3000, () => console.log("http://localhost:3000"))
 ```
 
-`http://localhost:3000/Something`으로 접속하면 app.METHOD의 함수구문이 실행된다
+`http://localhost:3000/Something`으로 접속하면 app.METHOD의 함수구문이 실행된다<br/>
 METHOD<sup>[2](#footnote2)</sup>를 활용해 페이지를 구현할 수 있다<br/><br/>
 
 - 동적페이지의 param 구하기
@@ -67,7 +67,7 @@ app.METHOD2()
 
 기존에 undefined로 뜨던 req.body를 접근할수 있게 만들어준다<br/>
 METHOD1로 접근을 하던 METHOD2로 접근을 하던 위에서 아래로 진행되는 특성상 app.use로 사용되는 bodyParser는 무조건 실행된다<br/>
-urlencoded의 extended는 qs모듈(추가적인 보안 기능이 있는 파싱) 사용 여부를 선택한다(사용할 시 qs npm 라이브러리 추가 설치 필요)<br/><br/>
+urlencoded의 extended는 qs모듈(추가적인 보안 기능이 있는 파싱) 사용 여부를 선택한다(사용할 시 qs npm 라이브러리 추가 설치 필요) [자세한 차이를 확인하기 - stackoverflow참조](https://stackoverflow.com/questions/29960764/what-does-extended-mean-in-express-4-0/45690436#45690436)<br/><br/>
 
 - 라우터<sup>[4](#footnote4)</sup>
   공통적으로 겹치는 주소를 하나로 묶어서 하나의 파일에 코드가 길게 쓰이는 것을 막을수있다
@@ -102,7 +102,7 @@ router.get("/u", function () {})
 router.get("/d", function () {})
 ```
 
-코드가 더 많아졌다고 생각할 수 있지만 /test/_ 를 /realtest/_ 형태로 수정해야하는 상황이 올 경우 라우터 기능을 활용한 예시가 수정하기 용이하다<br/>
+코드가 더 많아졌다고 생각할 수 있지만 /test/~ 를 /realtest/~ 형태로 수정해야하는 상황이 생기는 경우 라우터 기능을 활용한 예시가 수정하기 용이하다<br/>
 
 ---
 
