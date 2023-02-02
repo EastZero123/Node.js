@@ -69,7 +69,7 @@ app.METHOD2()
 METHOD1로 접근을 하던 METHOD2로 접근을 하던 위에서 아래로 진행되는 특성상 app.use로 사용되는 bodyParser는 무조건 실행된다<br/>
 urlencoded의 extended는 qs모듈(추가적인 보안 기능이 있는 파싱) 사용 여부를 선택한다(사용할 시 qs npm 라이브러리 추가 설치 필요) [자세한 차이를 확인하기 - stackoverflow참조](https://stackoverflow.com/questions/29960764/what-does-extended-mean-in-express-4-0/45690436#45690436)<br/><br/>
 
-- 라우터<sup>[4](#footnote4)</sup>
+- 라우터<sup>[4](#footnote4)</sup><br/>
   공통적으로 겹치는 주소를 하나로 묶어서 하나의 파일에 코드가 길게 쓰이는 것을 막을수있다
 
 ```js
