@@ -20,7 +20,8 @@ const app = express()
 app.XXX()
 ```
 
-XXX에는 express 내장함수를 사용할수 있다<br/>
+app.XXX에서 XXX에는 express 내장함수를 사용할수 있다<br/>
+[express 내장함수 목록](https://expressjs.com/ko/4x/api.html)<br/><br/>
 
 - 페이지 구현
 
@@ -31,9 +32,12 @@ const app = express()
 app.METHOD("Something", function (req, res) {
   // 함수 구문
 })
+
+app.listen(3000, () => console.log("http://localhost:3000"))
 ```
 
-METHOD<sup>[2](#footnote2)</sup>를 활용해 페이지를 구현할 수 있다<br/>
+`http://localhost:3000/Something`으로 접속하면 app.METHOD의 함수구문이 실행된다
+METHOD<sup>[2](#footnote2)</sup>를 활용해 페이지를 구현할 수 있다<br/><br/>
 
 - 동적페이지의 param 구하기
 
@@ -47,7 +51,7 @@ app.get("/test/:params", function (req, res) {
 ```
 
 `http://localhost:3000/test/123123`로 접속하면
-{ params: '123123' } 가 콘솔 출력된다<br/>
+{ params: '123123' } 가 콘솔 출력된다<br/><br/>
 
 - 미들웨어<sup>[3](#footnote3)</sup> body parser
 
@@ -63,7 +67,7 @@ app.METHOD2()
 
 기존에 undefined로 뜨던 req.body를 접근할수 있게 만들어준다<br/>
 METHOD1로 접근을 하던 METHOD2로 접근을 하던 위에서 아래로 진행되는 특성상 app.use로 사용되는 bodyParser는 무조건 실행된다<br/>
-urlencoded의 extended는 qs모듈(추가적인 보안 기능이 있는 파싱) 사용 여부를 선택한다(사용할 시 qs npm 라이브러리 추가 설치 필요)<br/>
+urlencoded의 extended는 qs모듈(추가적인 보안 기능이 있는 파싱) 사용 여부를 선택한다(사용할 시 qs npm 라이브러리 추가 설치 필요)<br/><br/>
 
 - 라우터<sup>[4](#footnote4)</sup>
   공통적으로 겹치는 주소를 하나로 묶어서 하나의 파일에 코드가 길게 쓰이는 것을 막을수있다
