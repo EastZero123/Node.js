@@ -12,7 +12,7 @@
 express 호출
 */
 const express = require("express")
-const app = express()
+const app = express() // 자바스크립트의 구조분해할당 사용
 
 /*
 호출 한 express 사용
@@ -20,6 +20,7 @@ const app = express()
 app.XXX()
 ```
 
+console.log로 찍어본 express()는 다음과 같이 나와 구조분해할당을 쓸수있다 <img src="./express_console_log.png" width="1000" height="600">
 app.XXX에서 XXX에는 express 내장함수를 사용할수 있다<br/>
 [express 내장함수 목록](https://expressjs.com/ko/4x/api.html)<br/><br/>
 
