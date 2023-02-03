@@ -43,6 +43,7 @@ const app = http.createServer((request, response) => {
 
 - JavaScript. 강의 내용 중간중간에 JavaScript 강의가 있으므로 참고한다.
 - JSON
+- [구조분해할당](https://ko.javascript.info/destructuring-assignment)
 
 ## 모듈(Module)?
 
