@@ -162,7 +162,7 @@ app.listen(3000, function () {
 
 세션 스토어를 사용한 파일과 같은 디렉토리상에 sessions 폴더가 생성되고 그안에 별도의 세션을 파일로 저장시킨다<br />
 
-저장 시킬 다양한 수단은 express-session npm 사이트에 수록 되어있다(mysql, mariadb, firestore등)[express-session npm사이트](https://www.npmjs.com/package/express-session) <br/>
+저장 시킬 다양한 수단은 express-session npm 사이트에 수록 되어있다(mysql, mariadb, fire등)[express-session npm사이트](https://www.npmjs.com/package/express-session) <br/>
 
 저장된 세션 파일을 열어보면 작성자의 파일 기준으로 {"cookie":{"originalMaxAge":null,"expires":null,"httpOnly":true,"path":"/"},"\_\_lastAccess":1675927329295} 으로 작성되어있다.
 
