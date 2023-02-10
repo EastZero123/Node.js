@@ -33,8 +33,7 @@
 var http = require("http")
 http
   .createServer(function (request, response) {
-    response.writeHead(200, {
-      // http 응답코드가 200이 뜨면
+    response.writeHead(200,   // 200 상태코드<sup>[1](#footnote1)</sup>와 함께
       "Set-Cookie": ["name=choi", "age=25"], // 다음과 같은 쿠키를 생성한다
     })
   })
@@ -53,8 +52,7 @@ http
   .createServer(function (request, response) {
     console.log(request.headers.cookie) // name=choi; age=25
     var cookies = {} // 쿠키를 담기 위한 그릇
-    if (request.headers.cookie !== undefined) {
-      // 쿠키가 존재하면
+    if (request.headers.cookie !== undefined) { // 쿠키가 존재하면
       cookies = cookie.parse(request.headers.cookie) // 쿠키를 파싱해서 그릇에 담는다
     }
     console.log(cookies.name) // choi
@@ -62,7 +60,7 @@ http
   .listen(3000)
 ```
 
-쿠키는 Http헤더<sup>[1](#footnote1)</sup>에 입력해 넣어 서버에 전송하기 때문에 request.headers로 Http헤더에 접근하면 cookie가 존재할 수 있다<br/>
+쿠키는 Http헤더<sup>[2](#footnote2)</sup>에 입력해 넣어 서버에 전송하기 때문에 request.headers로 Http헤더에 접근하면 cookie가 존재할 수 있다<br/>
 
 ## 사용 가능한 쿠키옵션
 
@@ -170,4 +168,6 @@ app.listen(3000, function () {
 
 ---
 
-<u><a name="footnote1">1</a></u>HTTP 헤더는 클라이언트와 서버가 요청 또는 응답으로 부가적인 정보를 전송할 수 있도록 해줍니다<br/>
+<u><a name="footnote1">1</a></u>HTTP 응답 상태 코드는 특정 HTTP 요청이 성공적으로 완료되었는지 알려줍니다<br/>
+예제 속 200은 '요청이 성공적으로 되었습니다'를 의미합니다<br/> <br/>
+<u><a name="footnote2">2</a></u>HTTP 헤더는 클라이언트와 서버가 요청 또는 응답으로 부가적인 정보를 전송할 수 있도록 해줍니다<br/>
