@@ -33,7 +33,7 @@
 var http = require("http")
 http
   .createServer(function (request, response) {
-    response.writeHead(200,   // 200 상태코드<sup>[1](#footnote1)</sup>와 함께
+    response.writeHead(200,   // 200 상태코드[1]와 함께
       "Set-Cookie": ["name=choi", "age=25"], // 다음과 같은 쿠키를 생성한다
     })
   })
