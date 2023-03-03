@@ -2,7 +2,7 @@
 
 ## 목차
 
-1. [소개](#소개)
+1. [개요](#개요)
 2. [Node.js?](#nodejs)
 3. [Node.js 선행학습](#nodejs-선행학습)
 4. [모듈(Module)](#모듈module)
@@ -11,26 +11,31 @@
 7. [Package Manager?](#package-manager)
 8. [API?](#api)
 
-## 소개
+## 개요
 
-- 인프런의 'WEB2 - Node.js' 강의 리뷰.
+- 인프런의 'WEB2 - Node.js' 강의를 참고했습니다
 - [강의 주소](https://www.inflearn.com/course/web2-node-js)
 - [유튜브 재생목록](https://www.youtube.com/playlist?list=PLuHgQVnccGMA9QQX5wqj6ThK7t2tsGxjm)
 - [소스코드](https://github.com/web-n/Nodejs)
 
+## Node.js 선행학습
+
+- JavaScript. 강의 내용 중간중간에 JavaScript 강의가 있으므로 참고한다.
+- JSON
+- [구조분해할당](https://ko.javascript.info/destructuring-assignment)
+
 ## Node.js?
 
-- 오픈 소스 JavaScript 엔진인 크롬 V8에 _비동기 이벤트_ 처리 라이브러리인 libuv를 결합한 플랫폼.
-- JavaScript로 브라우저 밖에서 서버를 구축하는 등의 코드를 실행할 수 있게 해주는 런타임 환경.
-- 내장 모듈인 'http'를 사용하여 별도의 소프트웨어 없이 웹서버를 구동시킬 수 있다.
+- Node.js는 확장성 있는 네트워크 애플리케이션(특히 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다.
+- 웹 서버에서 아파치 등의 별도의 소프트웨어 없이 동작하는 것이 가능.
 
 ```javascript
 // http 서버 생성
-const http = require("http")
+const http = require("http") // http라는 이름의 라이브러리 모듈을 http라는 상수에 저장한다
 
 const app = http.createServer((request, response) => {
-  let _url = request.url
-  let pathname = url.parse(_url, true).pathname
+  let _url = request.url //url 정보를 담아온다
+  let pathname = url.parse(_url, true).pathname // url정보를 쪼개어 그중에 pathname을 가져와 저장한다
 
   if (pathname === "/") {
     res.writeHead(200)
@@ -38,12 +43,6 @@ const app = http.createServer((request, response) => {
   }
 })
 ```
-
-## Node.js 선행학습
-
-- JavaScript. 강의 내용 중간중간에 JavaScript 강의가 있으므로 참고한다.
-- JSON
-- [구조분해할당](https://ko.javascript.info/destructuring-assignment)
 
 ## 모듈(Module)?
 
@@ -59,11 +58,8 @@ const app = http.createServer((request, response) => {
   - Node.js를 설치하고 나면 그 안에 이미 제공되어지는 모듈.
   - 내장 모듈은 이미 Node.js를 설치할 때 존재하기 때문에 npm을 사용하지 않음.
 
-- 이해를 돕기 위한 이미지
-  <img src="./week1.png" width="1000" height="600">
-
 ```javascript
-// 모듈 생성
+// 모듈 생성 (예시 파일 경로: ./lib/template.js)
 module.exports = {
   HTML: function (title, list, body, control) {
     return `
@@ -88,6 +84,7 @@ const template = require("./lib/template")
 
 // 모듈 실행
 const html = template.HTML(
+  // template.js에 있는 HTML메서드를 사용한다
   title,
   list,
   `<h2>${title}</h2><p>${description}</p>`,
@@ -99,23 +96,18 @@ const html = template.HTML(
 
 - [동기, 비동기 처리](https://velog.io/@daybreak/%EB%8F%99%EA%B8%B0-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%B2%98%EB%A6%AC)
 - WEB API, 파일 읽기 등과 같이 소요시간이 있는 상황에서는 병렬적으로 수행하기 때문에 로직 상 문제가 생길 수 있으면 동기화를 시켜야 한다.
-- 예시에서 나온 동기화 처리 지원 함수가 아니라도 async/await, promise와 같은 다른 방식으로 동기화 처리를 할 수 있다.
 
 - 이해를 돕기 위한 이미지
 <p>
   <img src="./async1.png" align="center" width="49%"><img src="./async2.png" align="center" width="49%">
 </p>
 
-### async/await, promise
-
-- https://velog.io/@pilyeooong/Promise%EC%99%80-asyncawait-%EC%B0%A8%EC%9D%B4%EC%A0%90
-
 ## Node.js에서 GET, POST 사용하기
 
 ### GET
 
 ```javascript
-let queryData = url.parse(_url, true).query
+let queryData = url.parse(_url, true).query // url 정보를 쪼개어 그 중에 query의 정보를 꺼내어 저장한다
 
 // queryData.XXX -> XXX에서 url에서 파라미터 변수를 지정
 let id = queryData.id
@@ -147,14 +139,8 @@ request.on("end", function () {
 ### npm
 
 - [PM2](https://pm2.keymetrics.io)
-  - 데몬 프로세스 매니저
-    - pm2 start/stop/monit 등등
+  - 무중단 서비스 라이브러리
+    - pm2 start/stop/monit 등등으로 무중단 서비스 관리할 수 있다
 - [sanitize-html](https://www.npmjs.com/package/sanitize-html)
   - XSS 방어
-
-## API?
-
-- *A*pplication *P*rogramming *I*nterface
-  - 응용 프로그램 프로그래밍 인터페이스. 프로그래밍에서, 프로그램을 작성하기 위한 일련의 부(Sub) 프로그램, 프로토콜 등을 정의하여 상호 작용을 하기 위한 인터페이스 사양을 말함.
-  - https://namu.wiki/w/API
-  - https://nodejs.org/dist/latest-v18.x/docs/api/
+    - XSS란? 악의적인 사용자가 공격하려는 사이트에 스크립트를 넣는 기법을 말한다. 공격에 성공하면 사이트에 접속한 사용자는 삽입된 코드를 실행하게 되며, 보통 의도치 않은 행동을 수행시키거나 쿠키나 세션 토큰 등의 민감한 정보를 탈취한다.
