@@ -1,44 +1,42 @@
-const path = require('path');
+const path = require("path")
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require("express")
+const bodyParser = require("body-parser")
+const mongoose = require("mongoose")
 
-const errorController = require('./controllers/error');
-const User = require('./models/user');
+const errorController = require("./controllers/error")
+// const User = require("./models/user")
 
-const app = express();
+const app = express()
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set("view engine", "ejs")
+app.set("views", "views")
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+const adminRoutes = require("./routes/admin")
+const shopRoutes = require("./routes/shop")
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, "public")))
 
-app.use((req, res, next) => {
-  User.findById('5baa2528563f16379fc8a610')
-    .then(user => {
-      req.user = new User(user.name, user.email, user.cart, user._id);
-      next();
-    })
-    .catch(err => console.log(err));
-});
+// app.use((req, res, next) => {
+//   User.findById("63aae13d42bb3fe4722b5453")
+//     .then((user) => {
+//       req.user = new User(user.name, user.email, user.cart, user._id)
+//       next()
+//     })
+//     .catch((err) => console.log(err))
+// })
 
-app.use('/admin', adminRoutes);
-app.use(shopRoutes);
+app.use("/admin", adminRoutes)
+app.use(shopRoutes)
 
-app.use(errorController.get404);
+app.use(errorController.get404)
 
 mongoose
-  .connect(
-    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/test?retryWrites=true'
-  )
-  .then(result => {
-    app.listen(3000);
+  .connect("mongodb+srv://system:1234@cluster0.hfg277q.mongodb.net/shop")
+  .then((result) => {
+    app.listen(3000)
   })
-  .catch(err => {
-    console.log(err);
-  });
+  .catch((err) => {
+    console.log(err)
+  })
